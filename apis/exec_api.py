@@ -16,7 +16,7 @@ def list_executive_names(org_name):
 
 def add_org_exec_info(org_name):
     try:
-        res = execs.add_organization_fund_info(org_name)
+        res = execs.add_organization_exec_info(org_name)
         if res is not None:
             return res
         else:

@@ -1,3 +1,5 @@
+import json
+
 from base.db_ops.db_ops import DBOps
 from configs.config import settings
 from models.funding import Funding
@@ -17,7 +19,6 @@ class FundOperations(DBOps):
                     for r in res:
                         data.append({
                                 'funding_id': r.funding_id,
-                                'org_name': r.org_name,
                                 'total_funding': r.total_funding,
                                 'funding_rounds': r.funding_rounds,
                                 'lead_investors': r.lead_investors,
@@ -34,10 +35,15 @@ class FundOperations(DBOps):
         try:
             with self.create_session() as session:
                 p = session.query(Funding).filter(Funding.org_name == organization_name).first()
-                if p is None:
-                    FundingScraper().add_fund_data(organization_name)
-                else:
-                    print(f'{organization_name} fund data already exists')
-
+            if p is not None and len(p) > 0:
+                print(f'{organization_name} fund data already exists')
+                return {
+                    'funding_id': p.funding_id,
+                    'total_funding': p.total_funding,
+                    'funding_rounds': p.funding_rounds,
+                    'lead_investors': p.lead_investors,
+                }
+            else:
+                return FundingScraper().add_fund_data(organization_name)
         except Exception as e:
             print(e)

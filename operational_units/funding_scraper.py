@@ -34,24 +34,19 @@ class FundingScraper(BaseScraper):
         return data_dict
 
     def add_fund_data(self, org_name):
-        with DBOps().create_session() as s:
-            p = s.query(Funding).filter(Funding.org_name == org_name).all()
-        if len(p) == 0:
-            data_dict = self.funding_scrape(org_name)
-            if len(data_dict) > 0:
-                try:
-                    with DBOps().create_session() as s:
-                        fund = Funding(data_dict['total_funding'], data_dict['funding_rounds'],
-                                       data_dict['lead_investors'], org_name)
-                        s.add(fund)
-                        s.commit()
-                        return data_dict
-                except Exception as e:
-                    print(e)
-            else:
-                print("Scraper didn't work")
+        data_dict = self.funding_scrape(org_name)
+        if len(data_dict) > 0:
+            try:
+                with DBOps().create_session() as s:
+                    fund = Funding(data_dict['total_funding'], data_dict['funding_rounds'],
+                                   data_dict['lead_investors'], org_name)
+                    s.add(fund)
+                    s.commit()
+                    return data_dict
+            except Exception as e:
+                print(e)
         else:
-            print(f'Funding data exists for {org_name}')
+            print("Scraper didn't work")
 
 
 if __name__ == '__main__':

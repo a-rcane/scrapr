@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e6a4e706-0eb3-4404-91a6-079047824c40" name="Changes" comment="commit">
+    <list default="true" id="e6a4e706-0eb3-4404-91a6-079047824c40" name="Changes" comment="Scraper data to table">
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql_table_scripts/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql_table_scripts/executives.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql_table_scripts/funding.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql_table_scripts/organization.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apis/exec_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/exec_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/db_ops/exec_ops.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/db_ops/exec_ops.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/db_ops/fund_ops.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/db_ops/fund_ops.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/operational_units/executives_scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/operational_units/executives_scraper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/operational_units/funding_scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/operational_units/funding_scraper.py" afterDir="false" />
     </list>
@@ -37,18 +45,22 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2bJyjTfC2iKNCdVvB3o2cMlzreY" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\sanch\Documents\GitHub\scrapr\base" />
@@ -192,7 +204,7 @@
       <option name="presentableId" value="Default" />
       <updated>1705947610947</updated>
       <workItem from="1705947612900" duration="2338000" />
-      <workItem from="1705988079650" duration="60417000" />
+      <workItem from="1705988079650" duration="62612000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1706119704231</created>
@@ -208,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706119864311</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Scraper data to table">
+      <created>1706122010470</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1706122010470</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,13 +247,14 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
     <MESSAGE value="commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit" />
+    <MESSAGE value="Scraper data to table" />
+    <option name="LAST_COMMIT_MESSAGE" value="Scraper data to table" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/scrapr$executives_scraper.coverage" NAME="executives_scraper Coverage Results" MODIFIED="1706111379024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/operational_units" />
     <SUITE FILE_PATH="coverage/scrapr$scraper.coverage" NAME="scraper Coverage Results" MODIFIED="1706089916639" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/operational_units" />
     <SUITE FILE_PATH="coverage/scrapr$db_ops.coverage" NAME="db_ops Coverage Results" MODIFIED="1705949238934" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db_ops" />
-    <SUITE FILE_PATH="coverage/scrapr$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1706118836776" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/scrapr$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1706123854477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/scrapr$scrapr.coverage" NAME="scrapr Coverage Results" MODIFIED="1706108411749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/scrapr$funding_scraper.coverage" NAME="funding_scraper Coverage Results" MODIFIED="1706121511885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/operational_units" />
   </component>
