@@ -1,0 +1,20 @@
+Index: operational_units/funding_scraper.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import time\r\n\r\nfrom base.db_ops.db_ops import DBOps\r\nfrom models.funding import Funding\r\nfrom operational_units.scraper import BaseScraper\r\n\r\n\r\nclass FundingScraper(BaseScraper):\r\n\r\n    def funding_scrape(self, org_name):\r\n        exec_url = f'https://www.crunchbase.com/organization/{org_name}/company_financials'\r\n        soup = self.return_soup(exec_url)\r\n\r\n        data_dict = {}\r\n\r\n        if soup.select_one('.spacer:nth-of-type(6) a .component--field-formatter') is not None:\r\n            lead_investor_element = soup.select_one('.spacer:nth-of-type(6) a .component--field-formatter')\r\n        else:\r\n            lead_investor_element = soup.select_one('.spacer:nth-of-type(3) a .component--field-formatter')\r\n\r\n        if soup.select_one('.spacer:nth-of-type(4) a .component--field-formatter') is not None:\r\n            funding_rounds_element = soup.select_one('.spacer:nth-of-type(4) a .component--field-formatter')\r\n        else:\r\n            funding_rounds_element = soup.select_one('.spacer:nth-of-type(1) a .component--field-formatter')\r\n\r\n        lead_investor = lead_investor_element.text if lead_investor_element else None\r\n        funding_rounds = funding_rounds_element.text if funding_rounds_element else None\r\n\r\n        data_dict['total_funding'] = soup.select_one('span.field-type-money')['title']\r\n        data_dict['lead_investors'] = lead_investor\r\n        data_dict['funding_rounds'] = funding_rounds\r\n\r\n        print(data_dict)\r\n        return data_dict\r\n\r\n    def add_fund_data(self, org_name):\r\n        data_dict = self.funding_scrape(org_name)\r\n        if len(data_dict) > 0:\r\n            dbops = DBOps()\r\n            try:\r\n                with dbops.create_session() as s:\r\n                    if s.query(Funding).filter(Funding.org_name == org_name).all() is None:\r\n                        fund = Funding(data_dict['total_funding'], data_dict['funding_rounds'],\r\n                                       data_dict['lead_investors'], org_name)\r\n                        s.add(fund)\r\n                        s.commit()\r\n                    else:\r\n                        print('Funding data exists for this organization')\r\n                    return data_dict\r\n            except Exception as e:\r\n                print(e)\r\n        else:\r\n            print(\"Scraper didn't work\")\r\n\r\n\r\nif __name__ == '__main__':\r\n    start = time.time()\r\n\r\n    FundingScraper().add_fund_data('flexport')\r\n\r\n    end = time.time()\r\n    print(str(end - start) + \" s\")\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/operational_units/funding_scraper.py b/operational_units/funding_scraper.py
+--- a/operational_units/funding_scraper.py	(revision 961c4de2fa07aca6068ab55971e1d46eb88c790c)
++++ b/operational_units/funding_scraper.py	(date 1706120295366)
+@@ -39,7 +39,8 @@
+             dbops = DBOps()
+             try:
+                 with dbops.create_session() as s:
+-                    if s.query(Funding).filter(Funding.org_name == org_name).all() is None:
++                    print(s.query(Funding).filter(Funding.org_name == org_name).first())
++                    if s.query(Funding).filter(Funding.org_name == org_name).first() is None:
+                         fund = Funding(data_dict['total_funding'], data_dict['funding_rounds'],
+                                        data_dict['lead_investors'], org_name)
+                         s.add(fund)
