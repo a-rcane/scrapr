@@ -30,23 +30,25 @@ class ExecutivesScraper(BaseScraper):
         return data_dict
 
     def add_exec_data(self, org_name):
-        data_dict = self.executives_scrape(org_name)
-        if len(data_dict) > 0:
-            dbops = DBOps()
-            try:
-                with dbops.create_session() as s:
-                    if s.query(Executives).filter(Executives.org_name == org_name).all() is None:
+        with DBOps().create_session() as s:
+            p = s.query(Executives).filter(Executives.org_name == org_name).all()
+        print(len(p))
+        if len(p) == 0:
+            data_dict = self.executives_scrape(org_name)
+            if len(data_dict) > 0:
+                try:
+                    with DBOps().create_session() as s:
                         for k in data_dict:
                             execs = Executives(k, data_dict[k], org_name)
                             s.add(execs)
                             s.commit()
-                    else:
-                        print('Executive data exists for this organization')
-                    return data_dict
-            except Exception as e:
-                print(e)
+                        return data_dict
+                except Exception as e:
+                    print(e)
+            else:
+                print("Scraper didn't work")
         else:
-            print("Scraper didn't work")
+            print('Executive data exists for this organization')
 
 
 if __name__ == '__main__':
