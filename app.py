@@ -21,7 +21,7 @@ app.add_url_rule('/organizations/add/<org_name>', view_func=org_api.add_org_info
 app.add_url_rule('/organizations/add/funding_info/<org_name>', view_func=fund_api.add_org_fund_info, methods=['POST'])
 
 # add organization exec info to db
-app.add_url_rule('/organizations/add/executives_info/<org_name>', view_func=exec_api.add_org_exec_info,
+app.add_url_rule('/organizations/add/executive_info/<org_name>', view_func=exec_api.add_org_exec_info,
                  methods=['POST'])
 
 # search for organization by name
@@ -29,11 +29,11 @@ app.add_url_rule('/organizations/search/<org_name>',
                  view_func=org_api.find_organization, methods=['GET'])
 
 # find funding info of org by org name
-app.add_url_rule('/organization/funding_info/<org_name>',
+app.add_url_rule('/organizations/funding_info/<org_name>',
                  view_func=fund_api.list_funding_names, methods=['GET'])
 
 # find executive info of org by org name
-app.add_url_rule('/organization/executive_info/<org_name>',
+app.add_url_rule('/organizations/executive_info/<org_name>',
                  view_func=exec_api.list_executive_names, methods=['GET'])
 
 

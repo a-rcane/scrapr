@@ -1,6 +1,7 @@
 import re
 import time
 from bs4 import BeautifulSoup
+from fake_useragent import UserAgent
 from selenium import webdriver
 from selenium_stealth import stealth
 
@@ -15,20 +16,15 @@ class BaseScraper:
         use_proxy = self.proxy
         options = webdriver.ChromeOptions()
         options.add_argument("start-maximized")
-        # options.add_argument("--headless")
+        options.add_argument("--headless")
         options.add_argument("--enable-javascript")
         options.add_argument(f"--use-proxy={use_proxy}")
         options.add_experimental_option('useAutomationExtension', False)
 
-        caps = webdriver.DesiredCapabilities.CHROME['proxy'] = {
-            "httpProxy": use_proxy,
-            "ftpProxy": use_proxy,
-            "sslProxy": use_proxy,
-            "proxyType": "MANUAL",
-        }
-
-        caps['acceptSslCerts'] = True
-        print(caps)
+        ua = UserAgent()
+        user_agent = ua.random
+        print(user_agent)
+        options.add_argument(f'--user-agent={user_agent}')
         driver = webdriver.Chrome(options=options)
 
         # Selenium Stealth settings

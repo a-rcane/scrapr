@@ -15,8 +15,17 @@ class OrgOperations(DBOps):
         try:
             with self.create_session() as session:
                 res = session.query(Organization).all()
-                print(res)
-                return 'success'
+            if res is not None and len(res) > 0:
+                ret_val = []
+                for r in res:
+                    ret_val.append(
+                        {
+                            'org_id': r.org_id,
+                            'org_name': r.org_name,
+                        })
+                return ret_val
+            else:
+                return None
         except Exception as e:
             print(e)
 
