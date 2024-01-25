@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e6a4e706-0eb3-4404-91a6-079047824c40" name="Changes" comment="Minor Fixes">
-      <change afterPath="$PROJECT_DIR$/requirements.text" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/base/db_ops/org_ops.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/db_ops/org_ops.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/operational_units/scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/operational_units/scraper.py" afterDir="false" />
-    </list>
+    <list default="true" id="e6a4e706-0eb3-4404-91a6-079047824c40" name="Changes" comment="Multiple scraper runs success" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -199,7 +193,7 @@
       <updated>1705947610947</updated>
       <workItem from="1705947612900" duration="2338000" />
       <workItem from="1705988079650" duration="62908000" />
-      <workItem from="1706175625167" duration="700000" />
+      <workItem from="1706175625167" duration="1366000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1706119704231</created>
@@ -229,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706124172679</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Multiple scraper runs success">
+      <created>1706176362842</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1706176362842</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,7 +253,8 @@
     <MESSAGE value="commit" />
     <MESSAGE value="Scraper data to table" />
     <MESSAGE value="Minor Fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes" />
+    <MESSAGE value="Multiple scraper runs success" />
+    <option name="LAST_COMMIT_MESSAGE" value="Multiple scraper runs success" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/scrapr$executives_scraper.coverage" NAME="executives_scraper Coverage Results" MODIFIED="1706111379024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/operational_units" />
