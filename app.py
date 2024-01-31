@@ -1,6 +1,11 @@
+import os
+import requests
+from fake_useragent import UserAgent
+
 from apis import org_api, fund_api, exec_api
 from configs.config import settings
 from base.utils import create_app
+from operational_units.rotating_proxies import check_proxies
 
 app = create_app()
 app.config['SECRET_KEY'] = settings.get('secret_key')
@@ -8,6 +13,32 @@ app.config['SECRET_KEY'] = settings.get('secret_key')
 
 @app.route('/')
 def ping():
+    return 'ping!'
+
+
+@app.route('/run-all', methods=['POST'])
+def run_all():
+    org_list = ['flexport', 'google', 'perplexity-ai', 'limechat', 'ShipMonk', 'Cargomatic', 'Fleet',
+                'Bungii', 'Percepta', 'WideSense']
+    abs_path = os.path.dirname(__file__)
+    file_path = os.path.join(abs_path, 'apis.txt')
+    apis_list = open(file_path, "r").read().strip().split("\n")
+    base = 'https://94de-49-36-183-190.ngrok-free.app'
+    for org in org_list:
+        for api in apis_list:
+            proxy_val = check_proxies()
+            ua = UserAgent()
+            user_agent = ua.random
+            print('user_agent: ', user_agent)
+            print('proxy: ', proxy_val)
+            header = {
+                'User-Agent': user_agent,
+                'Referer': 'https://www.google.com/'
+            }
+            url = base + api + f'{org}'
+            print(url)
+            requests.post(url, proxies={"http": f"http://{proxy_val}"}, headers=header)
+
     return 'ping!'
 
 

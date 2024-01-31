@@ -42,3 +42,5 @@ urllib3==2.1.0
 webdriver-manager==4.0.1
 Werkzeug==3.0.1
 wsproto==1.2.0
+
+celery~=5.3.6

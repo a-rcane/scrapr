@@ -1,5 +1,7 @@
 import time
 
+import requests
+
 from base.db_ops.db_ops import DBOps
 from models.executives import Executives
 from operational_units.scraper import BaseScraper
@@ -8,7 +10,13 @@ from operational_units.scraper import BaseScraper
 class ExecutivesScraper(BaseScraper):
 
     def executives_scrape(self, org_name):
-        exec_url = f'https://www.crunchbase.com/organization/{org_name}/people'
+        cache_url = self.cache_url
+        exec_url = cache_url + f'crunchbase.com/organization/{org_name}/people'
+
+        if requests.get(exec_url).status_code != 200:
+            exec_url = f'https://www.crunchbase.com/organization/{org_name}/people'
+
+        print(exec_url)
         soup = self.return_soup(exec_url)
 
         names = soup.select('.fields a.accent')

@@ -1,5 +1,3 @@
-import json
-
 from base.db_ops.db_ops import DBOps
 from configs.config import settings
 from models.funding import Funding

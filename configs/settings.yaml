@@ -6,6 +6,6 @@ default:
   secret_key: settings.get('secret_key')
   SECURITY_PASSWORD_SALT: settings.get('SECURITY_PASSWORD_SALT')
   DB_NAME: 'scrape'
-  DB_URI: 'postgresql+psycopg2://root:root@localhost:5432/scrape'
+  DB_URI: 'postgresql+psycopg2://root:root@localhost:5432/scrapr'
   host: 'localhost'
   user: 'root'

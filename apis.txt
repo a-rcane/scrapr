@@ -1,0 +1,3 @@
+/organizations/add/
+/organizations/add/funding_info/
+/organizations/add/executive_info/
